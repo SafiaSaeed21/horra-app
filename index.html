@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حُرّة - منصة أطفال فلسطين التفاعلية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=18.0">
+</head>
+<body>
+
+  <!-- Authentic Tatreez Side Borders -->
+  <div class="embroidery-bg left-pattern"></div>
+  <div class="embroidery-bg right-pattern"></div>
+
+  <!-- Floating Header Bar (Pill Container) -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="header-right-group">
+        <!-- Exact Logo Image -->
+        <div class="logo-container" onclick="showView('home')" title="حُرّة - الصفحة الرئيسية">
+          <img src="assets/logo.jpg" alt="حُرّة" class="logo-img">
+        </div>
+        <nav class="main-nav">
+          <button class="nav-btn active" id="nav-home" onclick="showView('home')">الصفحة الرئيسية</button>
+          <button class="nav-btn" id="nav-games" onclick="scrollToGames()">الألعاب</button>
+          <button class="nav-btn" id="nav-contact" onclick="openContactModal()">تواصل معنا</button>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <button class="sound-toggle" id="sound-btn" onclick="toggleAudio()" title="تشغيل / كتم الصوت">🔊</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Top Floating Notification Banner for Level Transition (Zero Backdrop Blur, Album 100% Readable!) -->
+  <div class="transition-top-banner" id="level-transition-banner">
+    <div class="banner-inner">
+      <div class="banner-text-box">
+        <h3 id="transition-msg">🎉 أبطال! أكملت ألبوم أبطال المستوى 1 بنجاح!</h3>
+        <p>الانتقال للمستوى التالي خلال <span id="countdown-seconds" class="highlight-timer">10</span> ثوانٍ... اقرأ ملصقات الأبطال بالأسفل! 📜</p>
+      </div>
+      <button class="proceed-btn-banner" onclick="proceedToNextLevel()">المتابعة الآن ➡️</button>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view active">
+      <div class="hero-banner">
+        <div class="hero-text">
+          <span class="hero-badge">🇵🇸 من أجل أطفالنا</span>
+          <h1>أهلاً بكم في منصة <span class="highlight">حُرّة</span> الألعاب التفاعلية</h1>
+          <p>رحلة ممتعة ومبشرة لاستكشاف تاريخ فلسطين، مدنها الجميلة، أبطالها العظام، وتراثها الأصيل من خلال التحدي والمرح!</p>
+        </div>
+      </div>
+
+      <!-- Games Grid Section -->
+      <section id="games-section" class="games-grid-container">
+        <h2 class="section-title">اختر لعبتك المفضلة واستمتع بالتحدي</h2>
+
+        <div class="games-grid">
+          <!-- Game 1: Map Explorer -->
+          <div class="game-card" onclick="openGame('map')">
+            <div class="card-left-wrapper">
+              <img src="assets/map.jpg" alt="اكتشف فلسطين" class="card-cover-img">
+            </div>
+            <div class="card-right-content">
+              <div class="card-icon-badge badge-blue">🧭</div>
+              <h3>اكتشف فلسطين</h3>
+              <p class="subtitle">Explore Palestine</p>
+              <button class="play-btn">ابدأ اللعب الآن 🚀</button>
+            </div>
+          </div>
+
+          <!-- Game 2: Heroes Album -->
+          <div class="game-card" onclick="openGame('heroes')">
+            <div class="card-left-wrapper">
+              <img src="assets/heroes.jpg" alt="أبطال حُرّة" class="card-cover-img">
+            </div>
+            <div class="card-right-content">
+              <div class="card-icon-badge badge-star">⭐</div>
+              <h3>أبطال حُرّة</h3>
+              <p class="subtitle">Horra Heroes</p>
+              <button class="play-btn">ابدأ اللعب الآن 🚀</button>
+            </div>
+          </div>
+
+          <!-- Game 3: Heritage Path (Quick 2-3 Min Game) -->
+          <div class="game-card" onclick="openGame('path')">
+            <div class="card-left-wrapper">
+              <img src="assets/path.jpg" alt="مسار التراث" class="card-cover-img">
+            </div>
+            <div class="card-right-content">
+              <div class="card-icon-badge badge-key">🗝️</div>
+              <h3>مسار التراث</h3>
+              <p class="subtitle">⏱️ لعبة سريعة: 2 - 3 دقائق 🔑</p>
+              <button class="play-btn">ابدأ اللعب الآن 🚀</button>
+            </div>
+          </div>
+
+          <!-- Game 4: Wheel of Fortune -->
+          <div class="game-card" onclick="openGame('wheel')">
+            <div class="card-left-wrapper">
+              <img src="assets/wheel.jpg" alt="عجلة الحظ" class="card-cover-img">
+            </div>
+            <div class="card-right-content">
+              <div class="card-icon-badge badge-wheel">🎡</div>
+              <h3>عجلة الحظ</h3>
+              <p class="subtitle">Wheel of Fortune</p>
+              <button class="play-btn">ابدأ اللعب الآن 🚀</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- GAME 1 VIEW: MAP JOURNEY (DISCOVER PALESTINE) -->
+    <section id="view-game-map" class="view game-view">
+      <div class="game-header">
+        <button class="back-btn" onclick="showView('home')">⬅️ العودة للرئيسية</button>
+        <h2>🗺️ اكتشف فلسطين - رحلة الخريطة الجغرافية</h2>
+        <div class="game-status-indicators">
+          <div class="level-indicator" id="map-progress-label">تحرير الخريطة: 0%</div>
+        </div>
+      </div>
+
+      <!-- 2-COLUMN SPLIT LAYOUT: 2/3 MAP + 1/3 EXPLORER PASSPORT -->
+      <div class="map-game-split-container">
+        
+        <!-- LEFT/MAIN 2/3 COLUMN: MAP VIEWPORT -->
+        <div class="map-column-2-3">
+          
+          <!-- Mascot Companion Card -->
+          <div class="mascot-companion-card">
+            <div class="mascot-avatar-wrapper">
+              <img src="assets/mascot_sunbird.jpg" alt="سُنـقُر المرشد" class="mascot-img">
+            </div>
+            <div class="mascot-dialogue">
+              <span class="mascot-name">🦅 المستكشف سُنـقُر (عصفور الشمس)</span>
+              <p id="mascot-speech-text">أهلاً بك يا مستكشف! اقترب واضغط على اسم أي محافظة على الخريطة لبدء رحلة التحرير والمعرفة! 🚀</p>
+            </div>
+          </div>
+
+          <!-- Masterpiece 3D 16-Governorate Full Uncropped Map Viewport -->
+          <div class="map-interactive-viewport">
+            <img src="assets/map_palestine_bg.jpg" alt="خريطة فلسطين الـ 3D التوضيحية الرسمية" class="map-bg-3d">
+          </div>
+        </div>
+
+        <!-- RIGHT/SIDE 1/3 COLUMN: PALESTINE EXPLORER PASSPORT (INTERACTIVE SELECTION) -->
+        <div class="passport-column-1-3">
+          <div class="explorer-passport-bar">
+            <div class="passport-header">
+              <h3>📘 جواز سفر مستكشف فلسطين</h3>
+              <span class="passport-subtitle">اضغط على اسم المحافظة لبدء استكشافها!</span>
+            </div>
+            <div class="passport-stamps-grid" id="passport-stamps-grid">
+              <!-- 16 Interactive Passport Stamp Slots -->
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('صفد')" data-city="صفد" title="اضغط لاستكشاف صفد"><span class="slot-icon">🏔️</span><span class="slot-name">صفد</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('عكا')" data-city="عكا" title="اضغط لاستكشاف عكا"><span class="slot-icon">🏰</span><span class="slot-name">عكا</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('طبريا')" data-city="طبريا" title="اضغط لاستكشاف طبريا"><span class="slot-icon">🌊</span><span class="slot-name">طبريا</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('حيفا')" data-city="حيفا" title="اضغط لاستكشاف حيفا"><span class="slot-icon">⛵</span><span class="slot-name">حيفا</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('الناصرة')" data-city="الناصرة" title="اضغط لاستكشاف الناصرة"><span class="slot-icon">🌿</span><span class="slot-name">الناصرة</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('بيسان')" data-city="بيسان" title="اضغط لاستكشاف بيسان"><span class="slot-icon">🌴</span><span class="slot-name">بيسان</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('جنين')" data-city="جنين" title="اضغط لاستكشاف جنين"><span class="slot-icon">🌾</span><span class="slot-name">جنين</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('طولكرم')" data-city="طولكرم" title="اضغط لاستكشاف طولكرم"><span class="slot-icon">🍊</span><span class="slot-name">طولكرم</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('نابلس')" data-city="نابلس" title="اضغط لاستكشاف نابلس"><span class="slot-icon">🧼</span><span class="slot-name">نابلس</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('يافا')" data-city="يافا" title="اضغط لاستكشاف يافا"><span class="slot-icon">🍊</span><span class="slot-name">يافا</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('الرملة')" data-city="الرملة" title="اضغط لاستكشاف الرملة"><span class="slot-icon">🕌</span><span class="slot-name">الرملة</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('رام الله')" data-city="رام الله" title="اضغط لاستكشاف رام الله"><span class="slot-icon">🏛️</span><span class="slot-name">رام الله</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('القدس')" data-city="القدس" title="اضغط لاستكشاف القدس"><span class="slot-icon">🕌</span><span class="slot-name">القدس</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('الخليل')" data-city="الخليل" title="اضغط لاستكشاف الخليل"><span class="slot-icon">🍇</span><span class="slot-name">الخليل</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('غزة')" data-city="غزة" title="اضغط لاستكشاف غزة"><span class="slot-icon">🌊</span><span class="slot-name">غزة</span><span class="slot-lock">🔓</span></div>
+              <div class="passport-slot interactive-passport-btn" onclick="openCityChallenge('بئر السبع')" data-city="بئر السبع" title="اضغط لاستكشاف بئر السبع"><span class="slot-icon">🐪</span><span class="slot-name">بئر السبع</span><span class="slot-lock">🔓</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CITY CHALLENGE MODAL (STEP-BY-STEP EXPLORATION) -->
+    <div id="map-city-modal" class="modal-overlay-heroes">
+      <div class="city-modal-card">
+        <button class="close-modal-city" onclick="closeCityModal()">✖</button>
+        
+        <div class="city-modal-header">
+          <span class="city-modal-icon" id="modal-city-icon">🕌</span>
+          <h2 id="modal-city-title">رحلة استكشاف القدس الشريف</h2>
+        </div>
+
+        <div class="city-modal-body">
+          
+          <!-- STEP 1: LANDMARK MATCHING -->
+          <div class="modal-step-box step-1 active" id="modal-step-1">
+            <div class="landmark-img-frame">
+              <img id="modal-landmark-img" src="assets/jerusalem_city.jpg" alt="معلم المدينة" class="modal-landmark-render">
+            </div>
+            <h3 class="step-question" id="modal-landmark-question">ما هو أشهر معالم هذه المدينة المقدسة؟</h3>
+            <div class="options-grid" id="modal-landmark-options">
+              <!-- Dynamic options -->
+            </div>
+          </div>
+
+          <!-- STEP 2: HERITAGE MATCHING -->
+          <div class="modal-step-box step-2 hidden" id="modal-step-2">
+            <h3 class="step-question" id="modal-heritage-question">اختر خيرات وتراث هذه المدينة الأصيلة:</h3>
+            <div class="options-grid" id="modal-heritage-options">
+              <!-- Dynamic options -->
+            </div>
+          </div>
+
+          <!-- STEP 3: REWARD & FUN FACT -->
+          <div class="modal-step-box step-3 hidden" id="modal-step-3">
+            <div class="reward-stamp-seal">✨ طابع جديد! ✨</div>
+            <h3 class="fact-title">💡 معلومة استكشافية شيقة:</h3>
+            <p class="fact-text" id="modal-city-fact-text">تتميز القدس بوجود المسجد الأقصى المبارك وكنيسة القيامة، وتُعد عاصمة فلسطين الأبدية وقلبها النبض!</p>
+            <button class="claim-stamp-btn" onclick="claimCityStamp()">ختم جواز السفر ومتابعة الرحلة 🚀</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME 2 VIEW: HEROES (UNLIMITED ATTEMPTS, 7 LEVELS, LEVEL-SPECIFIC ALBUM) -->
+    <section id="view-game-heroes" class="view game-view">
+      <div class="game-header">
+        <div class="game-header-actions">
+          <button class="exit-game-btn" onclick="exitHeroesGame()">🚪 الخروج من اللعبة</button>
+          <button class="restart-levels-btn" onclick="restartAllHeroesLevels()">🔄 تكرار المستويات الـ 7</button>
+        </div>
+        <h2>🌟 أبطال حُرّة - ذاكرة الأبطال والرواد</h2>
+        <div class="game-status-indicators">
+          <div class="level-indicator" id="heroes-level-label">المستوى 1 من 7</div>
+        </div>
+      </div>
+      <div class="game-body heroes-game-body">
+        <div class="game-instructions-box">
+          💡 <strong>طريقة اللعب:</strong> طابق بين <strong>كارت صورة البطل</strong> و<strong>كارت أبرز عمل وإنجاز له</strong>! حاول حتى تكتشف كل الأبطال! 🌟
+        </div>
+        
+        <!-- Two Equal Rows Memory Grid (8 Cards Top + 8 Cards Bottom) -->
+        <div class="memory-grid-two-rows" id="memory-grid">
+          <!-- Cards generated via JS -->
+        </div>
+
+        <div class="sticker-album">
+          <h3>📜 ألبوم ملصقات الأبطال المحررين:</h3>
+          <div class="stickers-container" id="stickers-container">
+            <div class="empty-album-msg">طابق كروت الأبطال لإلغاء القفل عن ملصقاتهم في ألبومك التجميعي!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME 3 VIEW: HERITAGE BOARD PATH (3D PIXAR MASTERPIECE) -->
+    <section id="view-game-path" class="view game-view">
+      <div class="game-header">
+        <button class="back-btn" onclick="showView('home')">⬅️ العودة للرئيسية</button>
+        <h2>🗝️ مسار التراث - مفتاح العودة التاريخي</h2>
+        <div class="game-score">🔑 المفاتيح: <span id="keys-count">0</span> ✨</div>
+      </div>
+      
+      <div class="game-body path-game-body-modern">
+        <!-- CONTROLS & STATUS BAR -->
+        <div class="path-controls-card">
+          <div class="dice-box-3d" onclick="rollDice()">
+            <div class="dice-cube" id="dice">🎲</div>
+            <button class="roll-btn-3d" id="roll-btn">ارمي النرد! 🎲</button>
+          </div>
+          <div class="path-status-badge" id="path-status">
+            اضغط على النرد للبدء بالتحرك في مسار التراث ومفتاح العودة! 🗝️
+          </div>
+        </div>
+
+        <!-- 3D PIXAR HERITAGE BOARD MAP CONTAINER -->
+        <div class="heritage-board-map-container">
+          <img src="assets/heritage_board_map_3d.jpg" alt="خريطة مسار التراث الـ 3D" class="board-map-bg-img">
+          
+          <!-- 12 Winding Stepping Stone Tiles Overlay -->
+          <div class="board-path-winding-grid" id="board-path">
+            <!-- Tiles generated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOM QUIZ MODAL FOR PATH CHALLENGES -->
+    <div class="modal-overlay" id="path-quiz-modal">
+      <div class="modal-card path-quiz-card">
+        <button class="close-modal" onclick="closePathQuizModal()">✖</button>
+        <div class="quiz-modal-header">
+          <span class="quiz-modal-icon">❓</span>
+          <h3 id="quiz-modal-title">تحدي مسار التراث</h3>
+        </div>
+        <div class="quiz-modal-body">
+          <p id="quiz-question-text" class="quiz-q-prompt">السؤال يظهر هنا...</p>
+          <div class="quiz-options-container" id="quiz-options-container">
+            <!-- Option buttons via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME 4 VIEW: WHEEL (COMPACT TOP & ENLARGED 3D PIXAR WHEEL) -->
+    <section id="view-game-wheel" class="view game-view">
+      <div class="game-header">
+        <button class="back-btn" onclick="showView('home')">⬅️ العودة للرئيسية</button>
+        <h2>🎡 عجلة الحظ التراثية - أدر واكتشف الكلمات</h2>
+        <div class="game-score">النقاط: <span id="wheel-score">0</span> ✨</div>
+      </div>
+      
+      <div class="game-body wheel-game-body-vertical">
+        <!-- 1. COMPACT CATEGORY BADGE -->
+        <div class="category-badge-pill" id="puzzle-cat">⭐ الفئة: 🍲 أكلات شعبية</div>
+
+        <!-- 2. COMPACT PUZZLE CARD -->
+        <div class="puzzle-section-card" id="puzzle-box">
+          <div class="puzzle-clue-text" id="puzzle-clue">💡 اللغز: أدر العجلة لتلقي اللغز الاستكشافي!</div>
+          
+          <!-- Compact 3D Letter Blocks -->
+          <div class="word-display-blocks" id="word-display">
+            <span class="letter-block-3d">_</span>
+            <span class="letter-block-3d">_</span>
+            <span class="letter-block-3d">_</span>
+            <span class="letter-block-3d">_</span>
+          </div>
+
+          <!-- HIDDEN / SLEEK INPUT FOR KEYBOARD TYPING -->
+          <div class="keyboard-input-wrapper">
+            <input type="text" id="native-keyboard-input" class="native-typing-field" autocomplete="off" autofocus placeholder="اكتب الحرف مباشرة ⌨️">
+          </div>
+        </div>
+
+        <!-- 3. ENLARGED 3D PIXAR FORTUNE WHEEL -->
+        <div class="wheel-section-centered">
+          <div class="wheel-container-3d">
+            <div class="wheel-pointer-icon">🔻</div>
+            <div class="wheel" id="wheel">
+              <img src="assets/wheel_3d.jpg" alt="عجلة الحظ التراثية الـ 3D" class="wheel-3d-img">
+            </div>
+          </div>
+          <button class="spin-btn" id="spin-btn" onclick="spinWheel()">أدر العجلة الآن 🎡</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Game Completion 7 Levels Modal Overlay -->
+  <div class="modal-overlay-heroes" id="game-complete-modal">
+    <div class="modal-card completion-card">
+      <h2>🏆 ألف مبروك بطل حُـرّة!</h2>
+      <p>أنهيت المستويات الـ 7 كاملة بنجاح وفتحت كل ملصقات رواد وأبطال فلسطين! 🕊️🇵🇸</p>
+      <div class="completion-actions">
+        <button class="submit-btn" onclick="restartAllHeroesLevels()">🔄 تكرار المستويات الـ 7</button>
+        <button class="exit-btn-modal" onclick="exitHeroesGame()">🚪 الخروج من اللعبة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="modal-overlay" id="contact-modal">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closeContactModal()">✖</button>
+      <h2>💌 تواصل معنا - منصة حُرّة</h2>
+      <p>يسعدنا تواصلكم واقتراحاتكم لتطوير الألعاب والأنشطة التعليمية لأطفالنا!</p>
+      <form onsubmit="handleContactSubmit(event)">
+        <div class="form-group">
+          <label>الاسم الكريم:</label>
+          <input type="text" required placeholder="ادخل اسمك">
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني:</label>
+          <input type="email" required placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label>رسالتك أو اقتراحك:</label>
+          <textarea rows="4" required placeholder="اكتب اقتراحك أو انطباعك هنا..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">إرسال الرسالة 🕊️</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p>© 2026 منصة <strong>حُرّة</strong> التعليمية للأطفال عن فلسطين - صممت بحب وشغف 🕊️🇵🇸</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="game-map.js"></script>
+  <script src="game-heroes.js"></script>
+  <script src="game-path.js"></script>
+  <script src="game-wheel.js"></script>
+</body>
+</html>
